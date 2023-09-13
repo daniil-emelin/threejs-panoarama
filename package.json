@@ -5,7 +5,7 @@
   "description": "",
   "main": "src/script.js",
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "npm i&npm run build",
     "deploy": "gh-pages -d dist",
     "serve": "webpack serve --open --mode development",
     "build": "webpack build --config ./webpack.config.js --mode production"

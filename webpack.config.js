@@ -29,8 +29,8 @@ module.exports = {
       },
       {
         test: /three\/examples\/js/,
-        use: 'imports-loader?THREE=three'
-      }
+        use: "imports-loader?THREE=three",
+      },
     ],
   },
   plugins: [
@@ -52,5 +52,10 @@ module.exports = {
   devServer: {
     watchFiles: path.join(__dirname, "src"),
     port: 3000,
+  },
+  resolve: {
+    alias: {
+      three: path.resolve("node_modules", "three/build/three.js"),
+    },
   },
 };
