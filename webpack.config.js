@@ -55,7 +55,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      three: path.resolve("node_modules", "three/build/three.js"),
+      three: path.resolve("node_modules", "three/build/three.module.js"),
     },
   },
 };
