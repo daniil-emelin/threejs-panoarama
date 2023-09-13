@@ -27,6 +27,10 @@ module.exports = {
           name: "/assets/[name].[ext]",
         },
       },
+      {
+        test: /three\/examples\/js/,
+        use: 'imports-loader?THREE=three'
+      }
     ],
   },
   plugins: [
