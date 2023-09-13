@@ -53,9 +53,4 @@ module.exports = {
     watchFiles: path.join(__dirname, "src"),
     port: 3000,
   },
-  resolve: {
-    alias: {
-      three: path.resolve("node_modules", "three/build/three.module.js"),
-    },
-  },
 };
