@@ -1,6 +1,6 @@
 {
   "name": "threejs-parallax",
-  "homepage": "https://daniil-emelin.github.io/threejs-parallax",
+  "homepage": ".",
   "version": "1.0.0",
   "description": "",
   "main": "src/script.js",
