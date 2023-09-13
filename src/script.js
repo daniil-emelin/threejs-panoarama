@@ -1,10 +1,15 @@
 "use strict";
 
-import * as THREE from "../../node_modules/three/build/three.module.js";
+import * as THREE from "./../../node_modules/three/build/three.module.js";
+
+import './style.css';
+
+import panoImage from '../assets/beach.jpeg';
+import panoImage2 from '../assets/beach_depth.png';
 
 window.addEventListener("load", function () {
   const panoImgPath = "../assets/beach.jpeg";
-  const panoDepthMap = "../assets/beach-depth.png";
+  const panoDepthMap = "../assets/beach_depth.png";
 
   let camera, scene, renderer, skybox;
   let height = 0;
