@@ -8,8 +8,8 @@ import panoImage from '../assets/beach.jpeg';
 import panoImage2 from '../assets/beach_depth.png';
 
 window.addEventListener("load", function () {
-  const panoImgPath = "./assets/beach.jpeg";
-  const panoDepthMap = "./assets/beach_depth.png";
+  const panoImgPath = "/assets/beach.jpeg";
+  const panoDepthMap = "/assets/beach_depth.png";
 
   let camera, scene, renderer, skybox;
   let height = 0;
