@@ -47,14 +47,14 @@ window.addEventListener("load", function () {
     const manager = new THREE.LoadingManager();
     const loader = new THREE.TextureLoader(manager);
 
-    loader.load(panoImgPath, function (texture) {
+    loader.load(panoImage, function (texture) {
       texture.colorSpace = THREE.SRGBColorSpace;
       texture.minFilter = THREE.NearestFilter;
       texture.generateMipmaps = false;
       skybox.material.map = texture;
     });
 
-    loader.load(panoDepthMap, function (depth) {
+    loader.load(panoImage2, function (depth) {
       depth.minFilter = THREE.NearestFilter;
       depth.generateMipmaps = false;
       skybox.material.displacementMap = depth;
