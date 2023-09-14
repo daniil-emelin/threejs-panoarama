@@ -1,16 +1,27 @@
 "use strict";
 
-import * as THREE from "three";
+import {
+  Scene,
+  Color,
+  AmbientLight,
+  PerspectiveCamera,
+  SphereGeometry,
+  MeshStandardMaterial,
+  LoadingManager,
+  TextureLoader,
+  WebGLRenderer,
+  BackSide,
+  Mesh,
+  SRGBColorSpace,
+  NearestFilter
+} from "three";
 
-import './style.css';
+import panoImage from "./../assets/beach.jpeg";
+import panoImage2 from "./../assets/beach_depth.png";
 
-import panoImage from '../assets/beach.jpeg';
-import panoImage2 from '../assets/beach_depth.png';
+import "./style.css";
 
 window.addEventListener("load", function () {
-  const panoImgPath = "/assets/beach.jpeg";
-  const panoDepthMap = "/assets/beach_depth.png";
-
   let camera, scene, renderer, skybox;
   let height = 0;
 
@@ -20,13 +31,13 @@ window.addEventListener("load", function () {
   function init() {
     const container = document.getElementById("container");
 
-    scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x101010);
+    scene = new Scene();
+    scene.background = new Color(0x101010);
 
-    const light = new THREE.AmbientLight(0xffffff, 3.3);
+    const light = new AmbientLight(0xffffff, 3.3);
     scene.add(light);
 
-    camera = new THREE.PerspectiveCamera(
+    camera = new PerspectiveCamera(
       70,
       window.innerWidth / window.innerHeight,
       1,
@@ -35,27 +46,27 @@ window.addEventListener("load", function () {
 
     scene.add(camera);
 
-    const panoSphereGeo = new THREE.SphereGeometry(30, 500, 500);
+    const panoSphereGeo = new SphereGeometry(30, 500, 500);
 
-    const panoSphereMat = new THREE.MeshStandardMaterial({
-      side: THREE.BackSide,
+    const panoSphereMat = new MeshStandardMaterial({
+      side: BackSide,
       displacementScale: -28.0,
     });
 
-    skybox = new THREE.Mesh(panoSphereGeo, panoSphereMat);
+    skybox = new Mesh(panoSphereGeo, panoSphereMat);
 
-    const manager = new THREE.LoadingManager();
-    const loader = new THREE.TextureLoader(manager);
+    const manager = new LoadingManager();
+    const loader = new TextureLoader(manager);
 
     loader.load(panoImage, function (texture) {
-      texture.colorSpace = THREE.SRGBColorSpace;
-      texture.minFilter = THREE.NearestFilter;
+      texture.colorSpace = SRGBColorSpace;
+      texture.minFilter = NearestFilter;
       texture.generateMipmaps = false;
       skybox.material.map = texture;
     });
 
     loader.load(panoImage2, function (depth) {
-      depth.minFilter = THREE.NearestFilter;
+      depth.minFilter = NearestFilter;
       depth.generateMipmaps = false;
       skybox.material.displacementMap = depth;
     });
@@ -64,7 +75,7 @@ window.addEventListener("load", function () {
       scene.add(skybox);
     };
 
-    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer = new WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.useLegacyLights = false;

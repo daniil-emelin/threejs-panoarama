@@ -16,8 +16,8 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
-    },
+        loader: "babel-loader",
+      },
       {
         test: /\.(css)$/,
         include: /src/,
@@ -29,7 +29,7 @@ module.exports = {
         test: /\.(jpe?g|png)$/i,
         loader: "file-loader",
         options: {
-          name: "/assets/[name].[ext]",
+          name: "assets/[name].[ext]",
         },
       },
       {
